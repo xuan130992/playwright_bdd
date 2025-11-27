@@ -6,12 +6,13 @@ from tests.pages.login_page.login_page import LoginPage
 
 scenarios('../../features/login/login.feature')
 @pytest.fixture()
-def login_page(page:Page):
-    return LoginPage(page)
+def login_page(page:Page,base_url):
+    return LoginPage(page,base_url)
 
 @given("I am on the login page")
-def go_to_login_page(login_page, base_url):
-    login_page.open_login_page(base_url)
+def go_to_login_page(login_page):
+    print(f"base_url={login_page.base_url}")
+    login_page.open_login_page(login_page.base_url)
 
 
 
@@ -22,12 +23,12 @@ def I_enter_username_and_password(login_page, username, password):
 
 
 @when("I click the login button")
-def I_click_the_login_button(go_to_login_page):
-    go_to_login_page.login_btn()
+def I_click_the_login_button(login_page):
+    login_page.login_btn()
 
 
 @then("I should see the partner page")
-def I_should_see_partner_page(go_to_login_page):
-    assert go_to_login_page.is_partner_displayed()
+def I_should_see_partner_page(login_page):
+    assert login_page.is_partner_displayed()
 
 
