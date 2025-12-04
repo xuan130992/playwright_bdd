@@ -31,4 +31,9 @@ def I_click_the_login_button(login_page):
 def I_should_see_partner_page(login_page):
     assert login_page.is_partner_displayed()
 
+@then("I should see the storage state")
+def I_should_see_storage_state(login_page):
+    login_page.save_login_state()
+
+
 

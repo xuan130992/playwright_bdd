@@ -35,3 +35,15 @@ def base_url():
     if not url:
         raise ValueError("BASE_URL not found in .env.qa")
     return url
+@pytest.fixture(scope="session")
+def browser_context_args(browser_context_args):
+    storage_path = "./tests/auth/storage_state.json"
+    if os.path.exists(storage_path):
+        print(f"✅ Using storage state: {storage_path}")
+        return {
+            **browser_context_args,
+            "storage_state": storage_path,
+        }
+    else:
+        print("⚠️ storage_state.json not found — running without saved login state")
+        return browser_context_args

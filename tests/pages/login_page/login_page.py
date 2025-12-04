@@ -1,4 +1,6 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, sync_playwright
+import os
+
 
 class LoginPage:
     def __init__(self,page:Page,base_url:str):
@@ -21,4 +23,10 @@ class LoginPage:
     def login_btn(self):
         self.login2_btn.click()
     def is_partner_displayed(self):
+
         return self.partner_logo.is_visible()
+
+
+    def save_login_state(self):
+        os.makedirs("auth", exist_ok = True)
+        self.page.context.storage_state(path="./tests/auth/storage_state.json")
