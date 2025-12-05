@@ -1,7 +1,12 @@
 from playwright.sync_api import Playwright,Page
+
+from conftest import base_url
+from tests.pages.login_page import login_page
+import os
 class register_common_mod_component:
-    def __init__(self,page:Page):
+    def __init__(self,page:Page,base_url):
         self.page=page
+        self.base_url= base_url
         self.iframe=page.frame_locator("#iframe-BLZ00000001004")
         self.bubblely_menu = self.page.locator('//*[contains(text(),"Bubblelyz")]')
         self.official_homepage = self.page.locator('//*[contains(text(),"Official Homepage Management")]')
@@ -13,10 +18,13 @@ class register_common_mod_component:
         self.register_component_option= self.iframe.locator('//*[contains(text(),"Please select the type of component to register.")]')
 
     def select_official_homepage(self):
+        print("run khuc nay truoc")
+        self.page.goto(f"{self.base_url}/main")
+        print(self.base_url)
         self.bubblely_menu.click()
         self.official_homepage.click()
         self.page_component.click()
-    def select_county(self,country:str):
+    def choose_country(self,country:str):
         self.select_county.click()
         self.input_country.fill(country)
         self.select_country_details.click()
