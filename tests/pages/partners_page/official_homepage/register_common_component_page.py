@@ -3,7 +3,7 @@ from playwright.sync_api import Playwright,Page
 from conftest import base_url
 from tests.pages.login_page import login_page
 import os
-class register_common_mod_component:
+class register_common_component:
     def __init__(self,page:Page,base_url):
         self.page=page
         self.base_url= base_url
@@ -16,11 +16,12 @@ class register_common_mod_component:
         self.select_country_details = self.iframe.locator('//*[contains(text(),"Republic of Korea (used)")]')
         self.register_btn = self.iframe.locator('//*[contains(text(),"Register Component")]')
         self.register_component_option= self.iframe.locator('//*[contains(text(),"Please select the type of component to register.")]')
-
+        self.select_component_type_lo= self.iframe.locator(f'//*[@class="py-8 px-24 rounded-br-10 rounded-tl-10 w-auto bg-black color-white inline-block text-18" and text()="{component_type}"]')
     def select_official_homepage(self):
         print("run khuc nay truoc")
+        print(f"cai nay thu{self.base_url}/main")
         self.page.goto(f"{self.base_url}/main")
-        print(self.base_url)
+
         self.bubblely_menu.click()
         self.official_homepage.click()
         self.page_component.click()
@@ -31,3 +32,5 @@ class register_common_mod_component:
     def click_register_btn(self):
         self.register_btn.click()
         self.register_component_option.click()
+    def select_component_type_page(self,component_type:str):
+        self.select_component_type_lo(component_type).click()
