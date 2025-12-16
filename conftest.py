@@ -11,7 +11,7 @@ def browser_type_launch_args(browser_type_launch_args):
 
         **browser_type_launch_args,
         "headless": False,    # <--- bật UI
-        "slow_mo": 250        # <--- thao tác chậm 250ms để dễ quan sát
+        "slow_mo": 500        # <--- thao tác chậm 250ms để dễ quan sát
     }
 load_dotenv(".env.qa")
 @pytest.fixture(scope='session',autouse=True)
@@ -23,10 +23,10 @@ def load_env():
 @pytest.fixture(scope='session')
 def username():
 
-    return os.getenv('USERNAME')
+    return os.getenv('PARTNER_USERNAME')
 @pytest.fixture(scope='session')
 def password():
-    return os.getenv('PASSWORD')
+    return os.getenv('PARTNER_PASSWORD')
 @pytest.fixture(scope='session')
 def base_url():
     url = os.getenv('BASE_URL')
