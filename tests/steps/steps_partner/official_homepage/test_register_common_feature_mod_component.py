@@ -43,6 +43,6 @@ def select_mod(register_mod_component_page):
 def verify_register_component_successful(register_mod_component_page):
     register_mod_component_page.register_mod_components()
 
-#@then('Then I can see "New component" in list')
-#def verify_register_new_component(register_feature_mod_component):
-       # register_feature_mod_component.verify_register_component_successful()
+@then('I can see New component in list')
+def verify_register_new_component(register_mod_component_page):
+    register_mod_component_page.verify_register_component_successful(register_mod_component_page.component_name)

@@ -23,14 +23,15 @@ class register_mod_component:
         self.register_scs_confirm= self.iframe.locator('//*[contains(text(),"Confirm") and @class="p-button-label"]')
         self.register_btn= self.iframe.locator('//*[contains(text(),"Register") and @class="p-button-label"]')
         self.register_complete_btn= self.iframe.locator('//*[contains(text(),"Confirm") and @class="p-button-label"]')
-        #self.new_component= self.iframe.locator()
+        self.component_name = f'feature mod component_{self.random_suffix}'
+
 
 
 
 
 
     def input_register_field(self):
-        self.title_input.fill(f'feature mod component_{self.random_suffix}')
+        self.title_input.fill(self.component_name)
         self.display_options.click()
         self.display_order.fill("0")
         self.use_title_options.click()
@@ -48,8 +49,9 @@ class register_mod_component:
         self.register_btn.click()
         self.register_complete_btn.click()
 
-    #def verify_register_component_successful(self):
-     #   self.new_component.is_visible()
+    def verify_register_component_successful(self,component_name):
+        new_component = self.iframe.locator(f'xpath=(//*[contains(text(),"{component_name}")])[1]')
+        new_component.is_visible()
 
 
 

@@ -7,4 +7,4 @@ Feature: User input common Mod information
     When I input all information fields
     Then I select mod
     Then I register new Feature Mod component successful
-    Then I can see "New component" in list
+    Then I can see New component in list
