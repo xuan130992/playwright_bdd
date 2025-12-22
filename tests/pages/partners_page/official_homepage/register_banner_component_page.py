@@ -27,7 +27,7 @@ class register_banner_component:
         self.display_order.fill(display_order)
         self.banner_btn.click()
         self.main_title_input.fill(f'banner_component_{self.random_suffix}')
-        self.link.click()
+        #self.link.click()
         self.link_input.fill(link_value)
     def register_banner_button(self):
         self.register_btn.click()
@@ -35,3 +35,4 @@ class register_banner_component:
     def verify_register_banner_component_successful(self,component_name):
         new_component= self.iframe.locator(f'xpath=(//*[contains(text(),"{component_name}")])[1]')
         new_component.is_visible()
+

@@ -35,6 +35,10 @@ def base_url():
     if not url:
         raise ValueError("BASE_URL not found in .env.qa")
     return url
+@pytest.fixture(scope='session')
+def main_display_url():
+    main_page_url = os.getenv("MAIN_PAGE_URL")
+    return main_page_url
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args):
     storage_path = "./tests/auth/storage_state.json"
