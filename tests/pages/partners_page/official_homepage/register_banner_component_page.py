@@ -32,7 +32,5 @@ class register_banner_component:
     def register_banner_button(self):
         self.register_btn.click()
         self.register_complete_btn.click()
-    def verify_register_banner_component_successful(self,component_name):
-        new_component= self.iframe.locator(f'xpath=(//*[contains(text(),"{component_name}")])[1]')
-        new_component.is_visible()
+
 

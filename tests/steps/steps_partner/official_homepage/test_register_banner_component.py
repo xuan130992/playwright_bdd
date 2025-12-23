@@ -48,8 +48,8 @@ def register_banner_component_successful(register_banner_component_page):
     register_banner_component_page.register_banner_button()
     pytest.component_name=register_banner_component_page.component_name
 @then('I can see New component in list')
-def verify_register_banner_component(register_banner_component_page):
-    register_banner_component_page.verify_register_banner_component_successful(register_banner_component_page.component_name)
+def verify_register_banner_component(commonFunctions_page):
+    commonFunctions_page.verify_register_new_component_successful(commonFunctions_page.component_name)
 @then('I can see New component in main displayed')
 def verify_register_banner_component_displayed(main_displayed_page):
     main_displayed_page.open_main_page()
