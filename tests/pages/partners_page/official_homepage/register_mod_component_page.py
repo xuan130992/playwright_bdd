@@ -18,7 +18,7 @@ class register_mod_component:
         self.over_lay= self.iframe.locator('//*[@class="p-select-overlay p-component"]')
         self.mod_type_select=self.iframe.locator('//span[text()="Official MOD"]')
         self.search_mod_btn= self.iframe.locator('//*[@class="p-button-icon i-mdi:magnify text-20"]')
-        self.mod_checkbox= self.iframe.locator('(//*[@class="p-checkbox-input"])[3]')
+        self.mod_checkbox= self.iframe.locator('(//*[@class="p-checkbox-input"])[4]')
         self.registe_mod_btn=self.iframe.locator('(//*[@class="p-button p-component text-14"])[2]')
         self.register_scs_confirm= self.iframe.locator('//*[contains(text(),"Confirm") and @class="p-button-label"]')
         self.register_btn= self.iframe.locator('//*[contains(text(),"Register") and @class="p-button-label"]')

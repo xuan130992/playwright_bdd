@@ -36,7 +36,7 @@ class register_common_component:
         component_type_locator= self.iframe.locator(f'//*[@class="py-8 px-24 rounded-br-10 rounded-tl-10 w-auto bg-black color-white inline-block text-18" and text()="{component_type}"]')
         component_type_locator.click()
     def see_component_type_detail(self,component_type:str):
-        component_type_detail= self.iframe.locator(f'//*[contains(text(),"{component_type}")]')
+        component_type_detail= self.iframe.locator(f'(//*[contains(text(),"{component_type}")])[1]')
         component_type_detail.is_visible()
 
 
