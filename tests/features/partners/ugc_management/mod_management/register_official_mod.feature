@@ -11,3 +11,4 @@ Feature: I create a new official mod
 
     Examples:
       | ingame_display_order |eng_oneline_description|eng_description|screenshot_image|filepath_image|android_file|filepath_android|iOs_file|filepath_iOS|windowns_file|filepath_windowns|server_file|filepath_server|
+      |1                     |Eng_online_mod_1       |Eng_des_mod_1  |xpath=(//*[@class="p-button-label" and contains(text(),"Upload")])[1]|./tests/resourse/modfile/Modfile.unity3d|xpath=(//*[@class="p-button-label" and contains(text(),"Upload")])[4]|./tests/resourse/modfile/Modfile.unity3d|xpath =(//*[@class="p-button-label" and contains(text(),"Upload")])[5]|./tests/resourse/modfile/Modfile.unity3d|xpath=(//*[@class="p-button-label" and contains(text(),"Upload")])[6]|./tests/resourse/modfile/Modfile.unity3d|xpath=(//*[@class="p-button-label" and contains(text(),"Upload")])[4]|./tests/resourse/modfile/Modfile.unity3d|

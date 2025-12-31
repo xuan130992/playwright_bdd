@@ -4,8 +4,8 @@ from pytest_bdd import given, when, then, parsers, scenarios
 from pytest_bdd.gherkin_parser import Scenario
 from tests.lib.common_functions import commonFunctions
 from tests.pages.partners_page.ugc_managerment_page.mod_managerment_page.mod_register_page import mod_register
-from tests.pages.partners_page.ugc_managerment_page.mod_managerment_page.navigate_mod_management_page import navigate_mod_management
-scenarios("../../../features/partners/ugc_management/mod_management/register_official_mod.feature")
+from tests.pages.partners_page.ugc_managerment_page.mod_managerment_page.navigate_mod_management_page import navigate_mod_managementPage
+scenarios("../../../../features/partners/ugc_management/mod_management/register_official_mod.feature")
 @pytest.fixture
 def commonFunctions_page(page:Page):
     return commonFunctions(page)
@@ -13,12 +13,12 @@ def commonFunctions_page(page:Page):
 def mod_register_page(page:Page):
     return mod_register(page)
 @pytest.fixture
-def navigate_mod_management_page(page:Page,base_url):
-    return navigate_mod_management(page,base_url)
+def navigate_mod_management_page(page:Page,base_url:str):
+    return navigate_mod_managementPage(page,base_url)
 
 @given('I go to page mod management')
 def navigate_mod_management(navigate_mod_management_page):
-    navigate_mod_management_page.navigate_mod_management
+    navigate_mod_management_page.navigate_mod_management()
 
 @then('I click registration button')
 def click_registration_button(navigate_mod_management_page):
@@ -27,8 +27,8 @@ def click_registration_button(navigate_mod_management_page):
 def official_mod_register(mod_register_page,package_version:str,ingame_display_order:str,eng_oneline_description:str,eng_description:str):
     mod_register_page.register_official_mod(package_version,ingame_display_order,eng_oneline_description,eng_description)
 @then('I click add screenshot button')
-def click_add_screenshot_btn(mod_register_page):
-    mod_register_page.click_screenshot_btn
+def click_add_screenshot_btn(mod_register_page,screenshot_image:str,filepath_image:str):
+    mod_register_page.click_screenshot_btn(screenshot_image,filepath_image)
 @then('I upload "{screenshot_image}" with "{filepath_image}"')
 def upload_screenshot_image(commonFunctions_page,screenshot_image:str,filepath_image:str):
     commonFunctions_page.upload_image(screenshot_image,filepath_image)
