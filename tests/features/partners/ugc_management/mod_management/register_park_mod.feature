@@ -12,4 +12,4 @@ Feature: I create a new park mod
 
     Examples:
       |package_version|android_file|filepath_android|iOs_file|filepath_iOS|windowns_file|filepath_windowns|server_file|filepath_server|
-    |1.0.1|xpath=(//*[@class="p-button-label" and contains(text(),"Upload")])[3]|./tests/resourse/modfile/Modfile.unity3d|xpath =(//*[@class="p-button-label" and contains(text(),"Upload")])[3]|./tests/resourse/modfile/Modfile.unity3d|xpath=(//*[@class="p-button-label" and contains(text(),"Upload")])[3]|./tests/resourse/modfile/Modfile.unity3d|xpath=(//*[@class="p-button-label" and contains(text(),"Upload")])[3]|./tests/resourse/modfile/Modfile.unity3d|
+      |1.0.1|xpath=(//*[@class="p-button-label" and contains(text(),"Upload")])[1]|./tests/resourse/modfile/Modfile.unity3d|xpath =(//*[@class="p-button-label" and contains(text(),"Upload")])[1]|./tests/resourse/modfile/Modfile.unity3d|xpath=(//*[@class="p-button-label" and contains(text(),"Upload")])[1]|./tests/resourse/modfile/Modfile.unity3d|xpath=(//*[@class="p-button-label" and contains(text(),"Upload")])[1]|./tests/resourse/modfile/Modfile.unity3d|

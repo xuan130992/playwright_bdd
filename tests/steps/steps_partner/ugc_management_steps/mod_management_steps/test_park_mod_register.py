@@ -6,7 +6,7 @@ from pytest_bdd import given, when, then, parsers, scenarios
 from tests.pages.partners_page.ugc_managerment_page.mod_managerment_page.mod_register_page import mod_register
 from tests.pages.partners_page.ugc_managerment_page.mod_managerment_page.navigate_mod_management_page import navigate_mod_managementPage
 from tests.lib.common_functions import commonFunctions
-scenarios('../../../../features/partners/ugc_management/mod_management/register_official_mod.feature')
+scenarios('../../../../features/partners/ugc_management/mod_management/register_park_mod.feature')
 @pytest.fixture
 def commonFunctions_page(page:Page):
     return commonFunctions(page)
@@ -16,12 +16,13 @@ def mod_register_page(page:Page):
 @pytest.fixture
 def navigate_mod_management_page(page:Page,base_url:str):
     return navigate_mod_managementPage(page,base_url)
+
 @given('I go to page mod management')
 def navigate_mod_management(navigate_mod_management_page):
-    navigate_mod_management_page.navigate_mod_management
+    navigate_mod_management_page.navigate_mod_management()
 @then('I click registration button')
 def click_registration_button(navigate_mod_management_page):
-    navigate_mod_management_page.click_registration_button
+    navigate_mod_management_page.click_registration_button()
 @then(parsers.cfparse('I input information to create a new mod with {package_version}'))
 def park_mod_registarion(mod_register_page, package_version):
     mod_register_page.register_park_mod(package_version)
