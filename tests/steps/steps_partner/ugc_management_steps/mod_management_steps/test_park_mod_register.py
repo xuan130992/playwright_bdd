@@ -24,8 +24,9 @@ def navigate_mod_management(navigate_mod_management_page):
 def click_registration_button(navigate_mod_management_page):
     navigate_mod_management_page.click_registration_button()
 @then(parsers.cfparse('I input information to create a new mod with {package_version}'))
-def park_mod_registarion(mod_register_page, package_version):
+def park_mod_registration(mod_register_page, package_version):
     mod_register_page.register_park_mod(package_version)
+    mod_register_page.mod_name_created = mod_register_page.mod_name
 then(parsers.cfparse('I upload {android_file} with {filepath_android}'))
 def upload_file_android(commonFunctions_page,android_file:str,filepath_android:str):
     commonFunctions_page.upload_image_mod(android_file,filepath_android)
@@ -49,7 +50,8 @@ def upload_file_server(commonFunctions_page,server_file:str,filepath_server:str)
 @then('I click register button')
 def click_register_button(mod_register_page):
     mod_register_page.click_register_btn()
+    time.sleep(5)
 
 @then('I can see new official mod')
-def verify_new_park_mod(commonFunctions_page):
-    commonFunctions_page.verify_register_new_mod_successful(commonFunctions_page.mod_name)
+def verify_new_park_mod(commonFunctions_page,mod_register_page):
+    commonFunctions_page.verify_register_new_mod_successful(mod_register_page.mod_name)

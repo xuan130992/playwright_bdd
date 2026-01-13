@@ -42,6 +42,7 @@ def see_component_type_detail(register_common_component_page,component_type:str)
 @when ('I input all information fields')
 def input_all_fields(register_mod_component_page):
     register_mod_component_page.input_register_field()
+    register_mod_component_page.component_name_created=register_mod_component_page.component_name
 
 @then('I select mod')
 def select_mod(register_mod_component_page):
@@ -52,10 +53,10 @@ def verify_register_component_successful(register_mod_component_page):
     register_mod_component_page.register_mod_components()
 
 @then('I can see New component in list')
-def verify_register_new_component(commonFunctions_page):
-    commonFunctions_page.verify_register_new_component_successful(commonFunctions_page.component_name)
+def verify_register_new_component(commonFunctions_page,register_mod_component_page):
+    commonFunctions_page.verify_register_new_component_successful(register_mod_component_page.component_name)
 
 @then('I can see New component in main displayed')
-def verify_register_banner_component_displayed(main_displayed_page):
+def verify_register_banner_component_displayed(main_displayed_page,register_mod_component_page):
     main_displayed_page.open_main_page()
-    main_displayed_page.verify_register_banner_component_displayed(main_displayed_page.component_name)
+    main_displayed_page.verify_register_banner_component_displayed(register_mod_component_page.component_name)

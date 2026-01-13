@@ -55,10 +55,11 @@ def select_mod(register_mod_component_page):
 @then('I register new ranking component successful')
 def verify_register_component_successful(register_mod_component_page):
     register_mod_component_page.register_mod_components()
+    register_mod_component_page.component_name_created=register_mod_component_page.component_name
 
 @then('I can see New component in list')
-def verify_register_new_component(commonFunctions_page):
-    commonFunctions_page.verify_register_new_component_successful(commonFunctions_page.component_name)
+def verify_register_new_component(commonFunctions_page,register_mod_component_page):
+    commonFunctions_page.verify_register_new_component_successful(register_mod_component_page.component_name)
 
 # @then('I can see New component in main displayed')
 # def verify_register_banner_component_displayed(main_displayed_page):

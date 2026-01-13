@@ -28,6 +28,7 @@ def click_registration_button(navigate_mod_management_page):
 @then(parsers.cfparse('I input information to create a new mod with {package_version} and {ingame_display_order} and {eng_oneline_description} and {eng_description}'))
 def official_mod_register(mod_register_page,package_version:str,ingame_display_order:str,eng_oneline_description:str,eng_description:str):
     mod_register_page.register_official_mod(package_version,ingame_display_order,eng_oneline_description,eng_description)
+    mod_register_page.mod_name_created = mod_register_page.mod_name
 @then('I click add screenshot button')
 def click_add_screenshot_btn(mod_register_page):
     mod_register_page.click_screenshot_btn()
@@ -59,9 +60,10 @@ def upload_file_server(commonFunctions_page,server_file:str,filepath_server:str)
 @then('I click register button')
 def click_register_button(mod_register_page):
     mod_register_page.click_register_btn()
+    time.sleep(5)
 
 @then('I can see new official mod')
-def verify_new_official_mod(commonFunctions_page):
-    commonFunctions_page.verify_register_new_mod_successful(commonFunctions_page.mod_name)
+def verify_new_official_mod(commonFunctions_page,mod_register_page):
+    commonFunctions_page.verify_register_new_mod_successful(mod_register_page.mod_name_created)
 
 

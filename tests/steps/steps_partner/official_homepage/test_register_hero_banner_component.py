@@ -43,17 +43,18 @@ def input_all_fields(register_hero_banner_component_page,commonFunctions_page,di
     register_hero_banner_component_page.input_register_hero_banner_field_image(display_order,link)
     commonFunctions_page.upload_image(upload_locator_PC,filepath_PC)
     commonFunctions_page.upload_image(upload_locator_mobile,filepath_mobile)
+    register_hero_banner_component_page.component_name_created=register_hero_banner_component_page.component_name
 @then('I register new Hero Banner component successful')
 def register_banner_component_successful(register_hero_banner_component_page):
     register_hero_banner_component_page.register_banner_button()
     pytest.component_name=register_hero_banner_component_page.component_name
 @then('I can see New component in list')
-def verify_register_banner_component(commonFunctions_page):
-    commonFunctions_page.verify_register_new_component_successful(commonFunctions_page.component_name)
+def verify_register_banner_component(commonFunctions_page,register_hero_banner_component_page):
+    commonFunctions_page.verify_register_new_component_successful(register_hero_banner_component_page.component_name)
 @then('I can see New component in main displayed')
-def verify_register_banner_component_displayed(main_displayed_page):
+def verify_register_banner_component_displayed(main_displayed_page,register_hero_banner_component_page):
     main_displayed_page.open_main_page()
-    main_displayed_page.verify_register_banner_component_displayed(main_displayed_page.component_name)
+    main_displayed_page.verify_register_banner_component_displayed(register_hero_banner_component_page.component_name)
 
 
 
