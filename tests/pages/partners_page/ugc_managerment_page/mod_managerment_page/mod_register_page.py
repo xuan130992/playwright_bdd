@@ -9,6 +9,7 @@ class mod_register:
         self.mod_type=self.iframe.locator('//*[@aria-label="Select Type"]')
         self.mod_type_selected= self.iframe.locator('//*[@aria-label="Official MOD"]')
         self.mod_type_park_selected =self.iframe.locator('//*[@aria-label="Park MOD"]')
+        self.mod_type_mini_selected = self.iframe.locator('//*[@aria-label="Mini MOD"]')
         self.keyword = self.iframe.locator('(//*[@placeholder="Please enter within 30 characters."])[1]')
         self.package_version=self.iframe.get_by_label("Package Version")
         self.visibility= self.iframe.locator('//*[@value="PRIVATE"]')
@@ -63,6 +64,20 @@ class mod_register:
         self.select_country.click()
         self.register_country_btn.click()
         self.english_title.fill(self.mod_name)
+    def register_mini_mod(self,package_version,eng_description):
+        self.mod_type.click()
+        self.mod_type_mini_selected.click()
+        self.package_version.fill(package_version)
+        self.visibility.click()
+        self.set_country.click()
+        self.select_country.click()
+        self.register_country_btn.click()
+        self.english_title.fill(self.mod_name)
+        self.english_description.fill(eng_description)
+        self.genre_settings.click()
+        self.genre_selected.click()
+        self.genre_registration.click()
+
 
     def click_screenshot_btn(self):
         self.add_screenshot.click()
