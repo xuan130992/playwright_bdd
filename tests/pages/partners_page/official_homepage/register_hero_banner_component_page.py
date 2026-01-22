@@ -20,6 +20,13 @@ class register_hero_banner_component:
         self.register_btn= self.iframe.locator('//*[contains(text(),"Register") and @class="p-button-label"]')
         self.register_complete_btn= self.iframe.locator('//*[contains(text(),"Confirm") and @class="p-button-label"]')
         self.component_name = f'banner_component_{self.random_suffix}'
+        # Video type
+        self.banner_type_video = self.iframe.locator('//*[contains(text(),"Video Type")]')
+        self.background_color = self.iframe.locator('//*[contains(text(),"Background")]')
+        self.select_background_color= self.iframe.locator('//*[contains(text(),"Select Background Color")]')
+        self.apply_background_color=self.iframe.locator('//*[contains(text(),"Apply")]')
+        self.video_url= self.iframe.locator('//*[contains(text(),"Video")]')
+
 
     def input_register_hero_banner_field_image(self,display_order,link_value):
         self.title_input.fill(self.component_name)
@@ -34,5 +41,22 @@ class register_hero_banner_component:
     def register_banner_button(self):
         self.register_btn.click()
         self.register_complete_btn.click()
+
+    def input_common_hero_banner_fields(self,display_order):
+        self.title_input.fill(self.component_name)
+        self.display_options.check()
+        self.display_order.fill(display_order)
+        self.banner_btn.click()
+    def input_hero_banner_video(self,background_color,link,video_url):
+        self.main_title_input.fill(f'banner_component_{self.random_suffix}')
+        self.sub_title_input.fill(f'banner_component_subtitle_{self.random_suffix}')
+        self.background_color.click()
+        self.select_background_color.fill(background_color)
+        self.apply_background_color.click()
+        self.link_input.fill(link)
+        self.video_url.fill(video_url)
+
+
+
 
 
