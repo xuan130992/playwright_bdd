@@ -1,3 +1,5 @@
+from asyncio import wait_for
+
 from playwright.sync_api import Playwright,Page
 import uuid
 class register_hero_banner_component:
@@ -16,28 +18,29 @@ class register_hero_banner_component:
         self.upload_button_PC= self.iframe.locator('(//*[contains(text(),"Upload")])[1]')
         self.upload_button_mobile= self.iframe.locator('(//*[contains(text(),"Upload")])[2]')
         self.link= self.iframe.locator('//*[@id="link"]')
-        self.link_input= self.iframe.locator('//*[@class="p-inputtext p-component w-350 text-14"]')
+        self.link_input= self.iframe.locator('(//*[@class="p-inputtext p-component w-350 text-14"])[2]')
         self.register_btn= self.iframe.locator('//*[contains(text(),"Register") and @class="p-button-label"]')
         self.register_complete_btn= self.iframe.locator('//*[contains(text(),"Confirm") and @class="p-button-label"]')
         self.component_name = f'banner_component_{self.random_suffix}'
         # Video type
         self.banner_type_video = self.iframe.locator('//*[contains(text(),"Video Type")]')
-        self.background_color = self.iframe.locator('//*[contains(text(),"Background")]')
-        self.select_background_color= self.iframe.locator('//*[contains(text(),"Select Background Color")]')
-        self.apply_background_color=self.iframe.locator('//*[contains(text(),"Apply")]')
-        self.video_url= self.iframe.locator('//*[contains(text(),"Video")]')
+        self.background_color = self.iframe.locator('//*[@id="backgroundColor-en-0"]')
+        self.select_background_color= self.iframe.locator('//*[@placeholder="#"]')
+        self.apply_background_color=self.iframe.locator('//*[@aria-label="Apply"]')
+        self.video_url= self.iframe.locator('//*[@id="videoUrl-en-0"]')
 
 
-    def input_register_hero_banner_field_image(self,display_order,link_value):
+    def input_register_hero_banner_field_image(self,display_order,link):
         self.title_input.fill(self.component_name)
         self.display_options.check()
         self.display_order.fill(display_order)
         self.banner_btn.click()
         self.banner_type.click()
+        self.link_input.fill(link)
         self.main_title_input.fill(f'banner_component_{self.random_suffix}')
         self.sub_title_input.fill(f'banner_component_subtitle_{self.random_suffix}')
         #self.link.click()
-        self.link_input.fill(link_value)
+
     def register_banner_button(self):
         self.register_btn.click()
         self.register_complete_btn.click()
@@ -47,13 +50,19 @@ class register_hero_banner_component:
         self.display_options.check()
         self.display_order.fill(display_order)
         self.banner_btn.click()
-    def input_hero_banner_video(self,background_color,link,video_url):
+    def input_hero_banner_video(self,background_color_selected,link,video_url):
+        self.banner_type_video.click()
+        self.link_input.fill(link)
         self.main_title_input.fill(f'banner_component_{self.random_suffix}')
         self.sub_title_input.fill(f'banner_component_subtitle_{self.random_suffix}')
+
         self.background_color.click()
-        self.select_background_color.fill(background_color)
-        self.apply_background_color.click()
-        self.link_input.fill(link)
+        self.select_background_color.clear()
+        self.select_background_color.fill(background_color_selected)
+        print(f"background:{background_color_selected}")
+        self.apply_background_color.dispatch_event("click")
+
+        print(f"value of link: {link}")
         self.video_url.fill(video_url)
 
 

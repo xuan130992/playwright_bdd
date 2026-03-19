@@ -1,12 +1,14 @@
 import pytest
 from playwright.sync_api import Playwright,Page
 from allure_commons import fixture
-from pytest_bdd import given, when, then, scenarios, parsers
+from pytest_bdd import given, when, then, scenarios, parsers, scenario
 from tests.pages.partners_page.official_homepage.register_hero_banner_component_page import register_hero_banner_component
 from tests.pages.partners_page.official_homepage.register_common_component_page import register_common_component
 from tests.pages.official_website.main_display_page import main_display_page
 from tests.lib.common_functions import commonFunctions
-scenarios("../../../features/partners/official_homepage/register_hero_banner_component.feature")
+@scenario("../../../features/partners/official_homepage/register_hero_banner_component.feature","I input valid Herro banner information")
+def test_create_hero_banner_with_image_type():
+    pass
 @pytest.fixture
 def register_common_component_page(page:Page,base_url):
     return register_common_component(page,base_url)
