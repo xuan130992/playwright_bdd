@@ -8,6 +8,7 @@ class commonFunctions():
         self.iframe = page.frame_locator("#iframe-BLZ00000001004")
         self.iframe_mod=page.frame_locator("#iframe-BLZ00000005001")
         self.iframe_genre=page.frame_locator("#iframe-BLZ00000005003")
+        self.iframe_notice=page.frame_locator("#iframe-BLZ00000005004")
 
     def upload_image(self, upload_locator:str, filepath:str):
         print("bat dau upload.")
@@ -58,6 +59,10 @@ class commonFunctions():
     def verify_register_new_genre_successful(self, genre_name):
         new_genre=self.iframe_genre.locator(f'xpath=(//*[contains(text(),"{genre_name}")])[1]')
         expect(new_genre).to_be_visible()
+
+    def verify_register_notice_successful(self,notice_content):
+        new_notice_content =self.iframe_notice.locator(f'xpath=(//*[contains(text(),"{notice_content}")])[1]')
+        expect(new_notice_content).to_be_visible()
 
 
 
