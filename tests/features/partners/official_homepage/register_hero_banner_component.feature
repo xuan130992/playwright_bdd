@@ -1,4 +1,7 @@
 Feature: I input field for Herro banner component
+
+
+
   Scenario Outline: I input valid Herro banner information
     Given I go to Page component management
     When I selects country "Republic of Korea (used)" and clicks Register Component button

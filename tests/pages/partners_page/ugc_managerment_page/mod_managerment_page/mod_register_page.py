@@ -4,7 +4,7 @@ import uuid
 class mod_register:
     def __init__(self,page:Page):
         self.page = page
-        self.iframe = page.frame_locator("#iframe-BLZ00000005001")
+        self.iframe = page.frame_locator("iframe[id^='iframe-BLZ']")
         self.random_suffix = uuid.uuid4().hex[:6]
         self.mod_type=self.iframe.locator('//*[@aria-label="Select Type"]')
         self.mod_type_selected= self.iframe.locator('//*[@aria-label="Official MOD"]')

@@ -3,7 +3,7 @@ from playwright.sync_api import Playwright,Page
 class register_mod_component:
     def __init__(self,page:Page):
         self.page =page
-        self.iframe = page.frame_locator("#iframe-BLZ00000001004")
+        self.iframe = page.frame_locator("iframe[id^='iframe-BLZ']")
         self.component_type= self.iframe.locator('//*[contains(text(),"Featured MOD")]')
         self.random_suffix = uuid.uuid4().hex[:6]
         self.title_input= self.iframe.locator('//*[@id="component-title"]')

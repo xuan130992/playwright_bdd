@@ -68,18 +68,31 @@ def base_url(request,load_env):
 def main_display_url():
     main_page_url = os.getenv("MAIN_PAGE_URL")
     return main_page_url
-@pytest.fixture(scope="session")
-def browser_context_args(browser_context_args):
-    storage_path = "./tests/auth/storage_state.json"
+# @pytest.fixture(scope="session")
+# def browser_context_args(browser_context_args):
+#
+#     storage_path = "./tests/auth/storage_state.json"
+#     if os.path.exists(storage_path):
+#         print(f"✅ Using storage state: {storage_path}")
+#         return {
+#             **browser_context_args,
+#             "storage_state": storage_path,
+#         }
+#     else:
+#         print("⚠️ storage_state.json not found — running without saved login state")
+#         return browser_context_args
+STORAGE_PATH = "./tests/auth/storage_state.json"
+@pytest.fixture()
+def context(browser):
+    storage_path = STORAGE_PATH
     if os.path.exists(storage_path):
-        print(f"✅ Using storage state: {storage_path}")
-        return {
-            **browser_context_args,
-            "storage_state": storage_path,
-        }
+        print(f"<UNK> Using storage state: {STORAGE_PATH}")
+        ctx=browser.new_context(storage_state=STORAGE_PATH)
     else:
-        print("⚠️ storage_state.json not found — running without saved login state")
-        return browser_context_args
+        print("<UNK> storage_state.json not found <UNK> running without saved login state")
+        ctx=browser.new_context()
+    yield ctx
+    ctx.close()
 
 ENV = os.getenv("ENV", "QA").upper()
 # Định nghĩa locator theo môi trường

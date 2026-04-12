@@ -5,7 +5,7 @@ import uuid
 class register_hero_banner_component:
     def __init__(self,page:Page):
         self.page = page
-        self.iframe = page.frame_locator("#iframe-BLZ00000001004")
+        self.iframe = page.frame_locator("iframe[id^='iframe-BLZ']")
         self.random_suffix = uuid.uuid4().hex[:6]
         self.title_input=self.iframe.locator('//*[@id="component-title"]')
         self.display_options=self.iframe.locator('(//*[@name="display_true"])[1]')
@@ -20,7 +20,7 @@ class register_hero_banner_component:
         self.link= self.iframe.locator('//*[@id="link"]')
         self.link_input= self.iframe.locator('(//*[@class="p-inputtext p-component w-350 text-14"])[2]')
         self.register_btn= self.iframe.locator('//*[contains(text(),"Register") and @class="p-button-label"]')
-        self.register_complete_btn= self.iframe.locator('//*[contains(text(),"Confirm") and @class="p-button-label"]')
+        self.register_complete_btn= self.iframe.locator('(//*[contains(text(),"Confirm") and @class="p-button-label"])[1]')
         self.component_name = f'banner_component_{self.random_suffix}'
         # Video type
         self.banner_type_video = self.iframe.locator('//*[contains(text(),"Video Type")]')

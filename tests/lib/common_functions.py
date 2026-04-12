@@ -5,10 +5,10 @@ class commonFunctions():
         self.page = page
         self.component_name = component_name
         self.mod_name = mod_name
-        self.iframe = page.frame_locator("#iframe-BLZ00000001004")
-        self.iframe_mod=page.frame_locator("#iframe-BLZ00000005001")
-        self.iframe_genre=page.frame_locator("#iframe-BLZ00000005003")
-        self.iframe_notice=page.frame_locator("#iframe-BLZ00000005004")
+        self.iframe = page.frame_locator("iframe[id^='iframe-BLZ']")
+        self.iframe_mod=page.frame_locator("iframe[id^='iframe-BLZ']")
+        self.iframe_genre=page.frame_locator("iframe[id^='iframe-BLZ']")
+        self.iframe_notice=page.frame_locator("iframe[id^='iframe-BLZ']")
 
     def upload_image(self, upload_locator:str, filepath:str):
         print("bat dau upload.")

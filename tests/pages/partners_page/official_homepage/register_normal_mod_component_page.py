@@ -3,7 +3,7 @@ from playwright.sync_api import Playwright,Page
 class register_normal_mod_component:
     def __init__(self,page:Page):
         self.page =page
-        self.iframe = page.frame_locator("#iframe-BLZ00000001004")
+        self.iframe = page.frame_locator("iframe[id^='iframe-BLZ']")
         self.resource_methods_manual=self.iframe.locator('//*[@value="MANUAL"]')
         self.resource_methods_auto=self.iframe.locator('//*[@value="AUTOMATIC"]')
         self.auto_mod_selection=self.iframe.locator('//*[@id="v-0-0-10"]')

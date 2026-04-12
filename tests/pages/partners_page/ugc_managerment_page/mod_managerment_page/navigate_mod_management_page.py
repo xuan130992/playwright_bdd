@@ -5,10 +5,10 @@ class navigate_mod_managementPage:
     def __init__(self,page:Page,base_url):
         self.page = page
         self.base_url = base_url
-        self.iframe = page.frame_locator("#iframe-BLZ00000005001")
-        self.bubblely_menu = self.page.locator('//*[contains(text(),"Bubblelyz")]')
-        self.ugc_management = self.page.locator('//*[contains(text(),"UGC Management")]')
-        self.mod_management = self.page.locator('//*[contains(text(),"MOD Management")]')
+        self.iframe = page.frame_locator("iframe[id^='iframe-BLZ']")
+        self.bubblely_menu = self.page.locator('//*[@menu-id="Bubblelyz"]')
+        self.ugc_management = self.page.locator('//*[@menu-id="BLZ00000005000"]')
+        self.mod_management = self.page.locator('//*[@menu-id="BLZ00000005001"]')
         self.registration_btn= self.iframe.locator('//*[contains(text(),"Registration") and @class="p-button-label"]')
     def navigate_mod_management(self):
 

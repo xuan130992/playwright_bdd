@@ -3,7 +3,7 @@ import uuid
 class RegisterPage(Page):
     def __init__(self,page:Page):
         self.page = page
-        self.iframe_genre=page.frame_locator('#iframe-BLZ00000005003')
+        self.iframe_genre=page.frame_locator("iframe[id^='iframe-BLZ']")
         self.random_suffix = uuid.uuid4().hex[:6]
         #self.usage_status_use= self.page.locator('//*[contains(text(),"Usage Status")]')
         #self.usage_status_notuse= self.page.locator('//*[contains(text(),"Usage Status")]')

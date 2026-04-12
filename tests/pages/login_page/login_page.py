@@ -28,7 +28,7 @@ class LoginPage:
 
 
     def save_login_state(self):
-        self.page.wait_for_selector('text=Partners')
-        print("da thay partners")
-        os.makedirs("auth", exist_ok = True)
+        self.page.wait_for_url("**/main")
+        print(f"da thay partners")
+        os.makedirs("./tests/auth", exist_ok = True)
         self.page.context.storage_state(path="./tests/auth/storage_state.json")

@@ -23,25 +23,25 @@ def click_register_button(ingame_notice_management):
     ingame_notice_management.click_register1_button()
 @then(parsers.parse('I select Platform {platform}'))
 def select_platform(ingame_notice_register,platform:str):
-    ingame_notice_register.select_platfrom(platform)
+    ingame_notice_register.select_platform(platform)
 @then(parsers.parse('I select Display Area {display_area}'))
 def select_display_area(ingame_notice_register,display_area:str):
     ingame_notice_register.select_display_area(display_area)
-@then('I select Send Type is Immediate')
-def select_send_type(ingame_notice_register):
-    ingame_notice_register.select_send_type()
+@then(parsers.parse('I select send type {send_type}'))
+def select_send_type(ingame_notice_register,send_type:str):
+    ingame_notice_register.select_send_type(send_type)
 @then('I select countries')
 def select_countries(ingame_notice_register):
     ingame_notice_register.select_notice_country()
 @then(parsers.parse('I input the notice content'))
 def input_notice_content(ingame_notice_register):
     ingame_notice_register.input_notice_content()
-    ingame_notice_register.input_notice_content_created = ingame_notice_register.input_notice_content()
+
 @then('I click the Register button')
 def click_register_button2(ingame_notice_register):
     ingame_notice_register.click_notice_register()
 @then('I verify the notice register successfully')
 def verify_notice_register(commonFunctions_page,ingame_notice_register):
-    commonFunctions_page.verify_register_notice_successful(ingame_notice_register.input_notice_content)
+    commonFunctions_page.verify_register_notice_successful(ingame_notice_register.notice_content)
 
 
