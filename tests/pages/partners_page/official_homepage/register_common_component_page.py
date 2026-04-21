@@ -29,7 +29,14 @@ class register_common_component:
        # self.use_component_title_option = self.iframe.locator('//*[@id="component-title"]')
         self.language_text=self.iframe.get_by_text("English", exact =True)
         self.default_language_cbx= self.iframe.get_by_label("Default language")
-        self.banner_btn = self.iframe.locator('//*[@class="p-button p-component p-button-primary text-14"]')
+        self.add_banner_btn = self.iframe.locator('//*[@class="p-button p-component p-button-primary text-14"]')
+        self.mod_register_btn= self.iframe.locator('//*[@class="p-button p-component text-14"]')
+        self.manual_registration_radio = self.iframe.locator('//*[@value="MANUAL"]')
+        self.max_count_display = self.iframe.locator('//*[@id="maximum_display"]')
+        self.seemore_checkbox = self.iframe.locator('//*[@id="v-0-0-6"]')
+        self.mod_bulk_register_btn= self.iframe.locator('//*[@class="p-button p-component ml-12 text-14"]')
+        self.Set_Aggregation_Period_Entire = self.iframe.locator('//*[contains(@value,"ENTIRE")]')
+
     def get_official_homepage_menu(self):
         if self.official_homepage.count()>0:
             return self.official_homepage
@@ -59,6 +66,7 @@ class register_common_component:
         component_type_locator= self.iframe.locator(f'//*[@class="py-8 px-24 rounded-br-10 rounded-tl-10 w-auto bg-black color-white inline-block text-18" and text()="{component_type}"]')
         component_type_locator.click()
         self.page.wait_for_load_state("networkidle")
+        self.page.wait_for_timeout(5000)
     def see_component_type_detail(self,component_type:str):
         component_type_detail= self.iframe.locator(f'(//*[contains(text(),"{component_type}")])[1]')
         component_type_detail.is_visible()
@@ -101,6 +109,18 @@ class register_common_component:
         if self.default_language_cbx.is_checked() and self.language_text.inner_text()=="English":
             return "English"
         return "other language"
+
+    def get_field_locator(self, field: str):
+
+        field_map = {
+            "Add Banner": self.add_banner_btn,
+            "Mod Register": self.mod_register_btn,
+            "Mod Bulk Register": self.mod_bulk_register_btn,
+            "Manual Registration": self.manual_registration_radio,
+            "Maximum Display Count": self.max_count_display,
+            "Entire": self.Set_Aggregation_Period_Entire,
+        }
+        return field_map.get(field)
 
 
 

@@ -12,7 +12,7 @@ class mod_register:
         self.mod_type_mini_selected = self.iframe.locator('//*[@aria-label="Mini MOD"]')
         self.keyword = self.iframe.locator('(//*[@placeholder="Please enter within 30 characters."])[1]')
         self.package_version=self.iframe.get_by_label("Package Version")
-        self.visibility= self.iframe.locator('//*[@value="PRIVATE"]')
+        self.visibility= self.iframe.locator('//*[@value="PUBLIC"]')
         self.set_country= self.iframe.locator('//*[@class="p-button p-component text-14" and contains(.,"Set Countries")]')
         self.select_country= self.iframe.locator('//*[contains(text(),"Select All")]')
         self.register_country_btn= self.iframe.locator('(//*[@class="p-button-label" and contains(text(),"Register")])[2]')

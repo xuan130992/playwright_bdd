@@ -18,7 +18,7 @@ class register_mod_component:
         self.over_lay= self.iframe.locator('//*[@class="p-select-overlay p-component"]')
         self.mod_type_select=self.iframe.locator('//span[text()="Official MOD"]')
         self.search_mod_btn= self.iframe.locator('//*[@class="p-button-icon i-mdi:magnify text-20"]')
-        self.mod_checkbox= self.iframe.locator('(//*[@class="p-checkbox-input"])[4]')
+        self.mod_checkbox= self.iframe.locator('(//*[@class="p-checkbox-input"])[3]')
         self.registe_mod_btn=self.iframe.locator('(//*[@class="p-button p-component text-14"])[2]')
         self.register_scs_confirm= self.iframe.locator('//*[contains(text(),"Confirm") and @class="p-button-label"]')
         self.register_btn= self.iframe.locator('//*[contains(text(),"Register") and @class="p-button-label"]')
@@ -38,10 +38,27 @@ class register_mod_component:
         self.en_language_component_title.fill(f'EN_feature mod component_{self.random_suffix}')
     def select_mod(self):
         self.mod_register_btn.click()
-        self.mod_type_btn.click()
-        self.mod_type_select.click()
-        self.search_mod_btn.click()
-        self.mod_checkbox.click()
+        rows= self.iframe.locator('table tbody tr')
+        row_count =rows.count()
+        for i in range (row_count):
+            row=rows.nth(i)
+            cells =row.locator('td')
+            # Debug xem từng ô chứa gì
+            for j in range(cells.count()):
+                print(f"  Row {i} - Cell {j}: {cells.nth(j).text_content().strip()}")
+
+            # ✅ Lấy đúng cột theo index thay vì .last
+            # Đếm cột từ UI: Select(0), MOD ID(1), MOD Type(2), Title(3),
+            #                 Version ID(4), Genre(5), Release(6), MOD Status(7), Public Status(8)
+            public_status = cells.nth(8).text_content().strip()
+            public_status =row.locator("td").last.text_content().strip()
+            if public_status == "Public":
+                row.locator("td").first.locator("input[type='checkbox']").click()
+                break
+        # self.mod_type_btn.click()
+        # self.mod_type_select.click()
+        # self.search_mod_btn.click()
+        # self.mod_checkbox.click()
 
     def register_mod_components(self):
         self.registe_mod_btn.click()

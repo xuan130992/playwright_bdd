@@ -3,7 +3,7 @@ from pytest_bdd import when, parsers, then, parser,given, scenarios
 from playwright.sync_api import Playwright,Page
 from tests.pages.partners_page.ingame_notice_page.ingame_notice_management_page import ingame_notice_management_page
 from tests.pages.partners_page.ingame_notice_page.ingame_notice_register_page import register_ingame_notice_page
-from tests.lib.common_functions import commonFunctions
+from tests.helper.common_functions import commonFunctions
 scenarios("../../../features/partners/ingame_notice/register_ingame_notice.feature")
 
 @pytest.fixture
