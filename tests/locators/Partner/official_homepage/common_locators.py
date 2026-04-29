@@ -7,7 +7,8 @@ class component_common_locators:
         self.random_suffix = uuid.uuid4().hex[:6]
         self.title_input=self.iframe.locator('//*[@id="component-title"]')
         self.display_options=self.iframe.locator('(//*[@name="display_true"])[1]')
-        self.display_period= self.iframe.locator('//*[@id="component-display-period"]')
+        self.display_period_from = self.iframe.locator('(//*[@placeholder="YYYY.MM.DD HH:mm"])[1]')
+        self.display_period_to = self.iframe.locator('(//*[@placeholder="YYYY.MM.DD HH:mm"])[2]')
         self.display_order= self.iframe.locator('//*[@id="component-displayOrder"]')
         self.banner_btn= self.iframe.locator('//*[@class="p-button p-component p-button-primary text-14"]')
         self.banner_type= self.iframe.locator('//*[contains(text(),"Image Type")]')
@@ -27,6 +28,6 @@ class component_common_locators:
         self.apply_background_color=self.iframe.locator('//*[@aria-label="Apply"]')
         self.video_url= self.iframe.locator('//*[@id="videoUrl-en-0"]')
         # Validation required fields
-        self.missing_title= self.iframe.locator('//*[contains(text(),"Missing Title")]')
-        self.invalid_display_period=self.iframe.locator('//*[contains(text(),"Invalid display period")]')
+        self.missing_title= self.iframe.locator('//*[contains(text(),"Please enter a title")]')
+        self.invalid_display_period=self.iframe.locator('//*[contains(text(),"End time cannot be set earlier than start time")]')
 

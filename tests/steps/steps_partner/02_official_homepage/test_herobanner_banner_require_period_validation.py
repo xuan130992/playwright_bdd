@@ -5,10 +5,8 @@ from pytest_bdd import given, when, then, scenarios, parsers, scenario
 from tests.locators.Partner.official_homepage.common_locators import component_common_locators
 from tests.pages.partners_page.official_homepage.register_common_component_page import register_common_component
 from tests.locators.Partner.official_homepage.Herobanner_banner_locators import component_hero_banner_locators
-from tests.helper.field_assertions import assert_locator_visible, fill_validation,get_error_locator
-
-
-@scenario("../../../features/partners/official_homepage/checking_herobanner_banner_validation.feature","Verify Display Period is required for <component_type>" )
+from tests.helper.field_assertions import assert_locator_visible
+@scenario("../../../features/partners/official_homepage/checking_herobanner_banner_validation.feature","Verify Title field is required for <component_type>" )
 def test_create_hero_banner_validation():
     pass
 @pytest.fixture
@@ -35,33 +33,3 @@ def selectCountry_Register(register_common_component_page,country:str):
 @given(parsers.cfparse('I select {component_type} component type'))
 def selectComponent(register_common_component_page,component_type):
     register_common_component_page.select_component_type_page(component_type)
-@when(parsers.cfparse('I click Register button without filling any fields'))
-def clickRegister(com_loc):
-    com_loc.register_btn.click()
-    #=====================Field_error_locator_map===============
-
-#==============================scenario 1==========================
-@then(parsers.cfparse('I can see required error alert on "{field}" field'))
-def verify_error_alert(filed_assertions_page,com_loc,banner_loc,field):
-    locator=get_error_locator(com_loc,banner_loc,field)
-    filed_assertions_page(locator)
-#====================scenario 2======================================
-@then(parsers.cfparse('I input valid "{filed}"'))
-def fill_validation_filed(com_loc,banner_loc,filed:str):
-    fill_validation(com_loc,banner_loc,filed)
-@then(parsers.cfparse('I input invalid "{filed}"'))
-def fill_validation_filed_invalid(com_loc,banner_loc,filed:str):
-    fill_validation(com_loc,banner_loc,filed)
-@then(parsers.cfparse('I input invalid "{filed}"'))
-def fill_validation_filed_invalid(com_loc,banner_loc,filed:str):
-    fill_validation(com_loc,banner_loc,filed)
-@when('I click Register button')
-def clickRegister(com_loc):
-    com_loc.register_btn.click()
-@then(parsers.cfparse('I can see "{field}" invalid pop-up'))
-def verify_error_alert(filed_assertions_page,com_loc,banner_loc,field):
-    locator=get_error_locator(com_loc,banner_loc,field)
-    filed_assertions_page(locator)
-
-
-

@@ -63,7 +63,7 @@ class register_common_component:
         self.register_btn.click()
         self.register_component_option.click()
     def select_component_type_page(self,component_type:str):
-        component_type_locator= self.iframe.locator(f'//*[@class="py-8 px-24 rounded-br-10 rounded-tl-10 w-auto bg-black color-white inline-block text-18" and text()="{component_type}"]')
+        component_type_locator= self.iframe.locator(f'//*[@class="py-8 px-24 rounded-br-10 rounded-tl-10 w-auto bg-black color-white inline-block text-18" and text()={component_type}]')
         component_type_locator.click()
         self.page.wait_for_load_state("networkidle")
         self.page.wait_for_timeout(5000)

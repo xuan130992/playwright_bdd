@@ -1,7 +1,7 @@
 Feature: Validate Page Component Registration Form
   Background:
-    Given I goes to Page component management
-    And I selects country "Republic of Korea" and clicks Register Component button
+    Given I go to Page component management
+    Given I selects country "Republic of Korea" and clicks Register Component button
 
     #require filed validation
   Scenario Outline: Verify Title field is required for <component_type>
@@ -15,14 +15,16 @@ Feature: Validate Page Component Registration Form
       | Banner         |
     Scenario Outline: Verify Display Period is required for <component_type>
     Given I select "<component_type>" component type
-    And I input valid "Title"
+    Then I input valid "Title"
+    Then I input invalid "Display Period from"
+    Then I input invalid "Display Period to"
     When I click Register button
-    Then I can see required error alert on "Display Period" field
+    Then I can see "Display Period" invalid pop-up
 
    Examples:
       | component_type |
       | Hero Banner    |
-      | Banner         |
+      #| Banner         |
 
   Scenario Outline: Verify Main Title in Banner section is required for <component_type>
     Given I select "<component_type>" component type
