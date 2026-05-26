@@ -1,3 +1,4 @@
+@regression @register
 Feature: I input field for banner component
   Scenario Outline: I input valid banner information
     Given I go to Page component management

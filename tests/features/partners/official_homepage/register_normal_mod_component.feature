@@ -1,3 +1,4 @@
+@regression @register
 Feature: User register normal Mod component
   Scenario: I register normal Mod component successful
     Given I go to Page component management

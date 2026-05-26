@@ -1,3 +1,4 @@
+@regression @register
 Feature: I input field for Herro banner component
 
 

@@ -1,3 +1,4 @@
+@regression @register
 Feature: User register ranking component
   Scenario: I register ranking component successful
     Given I go to Page component management

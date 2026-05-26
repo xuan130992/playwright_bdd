@@ -1,3 +1,4 @@
+@regression @register
 Feature: User input common Mod information
   Scenario: Input valid common mod information
     Given User goes to Page component management

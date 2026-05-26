@@ -32,5 +32,12 @@ class component_hero_banner_locators:
         self.invalid_display_period_banner= self.iframe.locator('//*[contains(text(),"Please enter main title")]')
         self.missing_main_title = self.iframe.locator('//*[contains(text(),"Please enter main title")]')
         self.missing_image_pc= self.iframe.locator('//*[contains(text(),"Please register PC image")]')
+        self.upload_locator_PC=self.page.locator('(//*[contains(text(),"Upload")])[1]')
+        self.filepath_PC="./tests/resourse/banner_images/png_2560x542.png"
+        self.upload_image_mobile=self.iframe.locator('(//*[contains(text(),"Upload")])[2]')
+        self.filepath_mobile="./tests/resourse/banner_images/png_1364x642.png"
+        self.filepath_PC_banner = "./tests/resourse/banner_images/png_1300x325.png"
+        self.filepath_mobile_banner = "./tests/resourse/banner_images/png_1138x210.png"
         self.missing_image_mobile= self.iframe.locator('//*[contains(text(),"Please register mobile image")]')
         self.missing_link_url= self.iframe.locator('//*[contains(text(),"Please enter link information")]')
+
