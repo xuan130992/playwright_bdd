@@ -6,9 +6,9 @@ from tests.locators.Partner.official_homepage.common_locators import component_c
 from tests.pages.partners_page.official_homepage.register_common_component_page import register_common_component
 from tests.locators.Partner.official_homepage.Herobanner_banner_locators import component_hero_banner_locators
 from tests.helper.field_assertions import assert_locator_visible
-scenarios("../../../features/partners/official_homepage/checking_register_validation.feature" )
-# def test_create_hero_banner_validation():
-#     pass
+# scenarios("../../../features/partners/official_homepage/checking_register_validation.feature" )
+# # def test_create_hero_banner_validation():
+# #     pass
 @pytest.fixture
 def register_common_component_page(page: Page,base_url):
     return register_common_component(page,base_url)

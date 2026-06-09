@@ -2,6 +2,7 @@ import pytest
 from playwright.sync_api import Playwright, Page
 from pytest_bdd import given, when, then, scenarios, parsers
 from tests.pages.partners_page.official_homepage.register_common_component_page import register_common_component
+
 scenarios("../../../features/partners/official_homepage/checking_default_fields.feature")
 @pytest.fixture
 def register_common_component_page(page:Page,base_url):
@@ -18,7 +19,7 @@ def selectCountry_Register(register_common_component_page,country:str):
 def select_component_type(register_common_component_page,component_type:str):
     register_common_component_page.select_component_type_page(component_type)
 
-@then(parsers.cfparse('I verify if the Display Country field is display "{expected_country}"'))
+@then(parsers.parse('I verify if the Display Country field is display "{expected_country}"'))
 def verify_display_country(register_common_component_page,expected_country:str):
     actual = register_common_component_page.get_selected_country()
     assert actual == expected_country,\

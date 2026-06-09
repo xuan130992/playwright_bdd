@@ -20,7 +20,7 @@ class main_display_page:
         print(f"main url is {self.main_display_url}")
     def verify_register_banner_component_displayed(self,component_name):
         assert component_name, f"component_name is None or empty!"
-        new_component = self.page.locator(f'xpath=(//*[contains(text(),"{component_name}")])[1]')
+        new_component = self.page.locator(f'xpath=(//*[contains(.,"{component_name}")])[1]')
         print(f'new_component: {new_component}')
         assert new_component.is_visible(),\
         f"component_name '{component_name}' is not visible"

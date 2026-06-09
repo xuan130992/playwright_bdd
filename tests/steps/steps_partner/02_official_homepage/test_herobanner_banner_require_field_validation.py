@@ -31,7 +31,7 @@ def filed_assertions_page():
 @pytest.fixture
 def commonFunctions_page(page: Page):
     return commonFunctions(page)
-@pytest.fixture
+@pytest.fixture (scope="session")
 def component_type_state():
     return {"value": None}
 # ===============Background steps==============
@@ -43,7 +43,7 @@ def selectCountry_Register(register_common_component_page,country:str):
     register_common_component_page.choose_country(country)
     register_common_component_page.click_register_btn()
 #================scenario steps=============
-@given(parsers.cfparse('I select {component_type} component type'))
+@given(parsers.parse('I select "{component_type}" component type'))
 def selectComponent(register_common_component_page,component_type,component_type_state):
     register_common_component_page.select_component_type_page(component_type)
     component_type_state["value"]= component_type
@@ -79,24 +79,6 @@ def clickRegister(com_loc):
 def verify_error_alert(filed_assertions_page,com_loc,banner_loc,mod_loc,field):
     locator=get_error_locator(com_loc,banner_loc,mod_loc,field)
     filed_assertions_page(locator)
-
-# #===========================Banner link URL require============================
-# @then(parsers.cfparse('I input valid "{filed}"'))
-# def fill_validation_filed(com_loc,banner_loc,filed:str):
-#     fill_validation(com_loc,banner_loc,filed)
-# @then('I click Add banner button')
-# def clickAddBanner(banner_loc):
-#     banner_loc.banner_btn.click()
-# @then(parsers.cfparse('I input invalid "{filed}"'))
-# def fill_validation_filed(com_loc,banner_loc,filed:str):
-#     fill_validation(com_loc,banner_loc,filed)
-# @then(parsers.cfparse('I upload valid image to PC image'))
-# def upload_image_PC(commonFunctions_page,com_loc,banner_loc,component_type_state):
-#     value = component_type_state["value"].strip().strip('"')
-#     if (value=="Hero Banner"):
-#         commonFunctions_page.upload_image(banner_loc.upload_locator_PC, banner_loc.filepath_PC)
-#     else:
-#         commonFunctions_page.upload_image(banner_loc.upload_locator_PC, banner_loc.filepath_PC_banner)
 @then(parsers.cfparse('I upload valid image to mobile image'))
 def upload_image_PC(commonFunctions_page,com_loc,banner_loc,component_type_state):
     value = component_type_state["value"].strip().strip('"')
@@ -104,41 +86,17 @@ def upload_image_PC(commonFunctions_page,com_loc,banner_loc,component_type_state
         commonFunctions_page.upload_image(banner_loc.upload_locator_PC, banner_loc.filepath_mobile)
     else:
         commonFunctions_page.upload_image(banner_loc.upload_locator_PC, banner_loc.filepath_mobile_banner)
-# @when(parsers.cfparse('I click Register button'))
-# def clickRegister(com_loc):
-#     com_loc.register_btn.click()
-# @then(parsers.cfparse(' I can see required error alert on "{field}" field'))
-# def verify_error_alert(filed_assertions_page,com_loc,banner_loc,field):
-#     locator=get_error_locator(com_loc,banner_loc,field)
-#     filed_assertions_page(locator)
-#
-# #====================================Component title require=======================
-# @then(parsers.cfparse('I input valid "{field}"'))
-# def fill_validation_filed(com_loc,banner_loc,mod_loc,field:str):
-#     fill_validation(com_loc,banner_loc,mod_loc,field)
-# @when('I click Register button')
-# def clickRegister(com_loc):
-#     com_loc.register_btn.click()
-# @then(parsers.cfparse('I can see required error alert for "{field}" field'))
-# def verify_error_alert(filed_assertions_page,com_loc,banner_loc,mod_loc,field:str):
-#     locator=get_error_locator(com_loc,banner_loc,mod_loc,field)
-#     filed_assertions_page(locator)
-#
-# #===================================Mod register requirement===========
-# @then(parsers.cfparse('I input valid "{field}"'))
-# def fill_validation_filed(com_loc,banner_loc,mod_loc,field:str):
-#     fill_validation(com_loc,banner_loc,mod_loc,field)
-# @then(parsers.cfparse('I input valid "{field}"'))
-# def fill_validation_filed(com_loc,banner_loc,mod_loc,field:str):
-#     fill_validation(com_loc,banner_loc,mod_loc,field)
-# @when('I click Register button')
-# def clickRegister(com_loc):
-#     com_loc.register_btn.click()
-# @then(parsers.cfparse('I can see required error alert for "{field}" field'))
-# def verify_error_alert(filed_assertions_page,com_loc,banner_loc,mod_loc,field:str):
-#     locator=get_error_locator(com_loc,banner_loc,mod_loc,field)
-#     filed_assertions_page(locator)
-
+# @given("I go to Page component management")
+# def selectOfficialHomepage(register_common_component_page):
+#     register_common_component_page.select_official_homepage()
+# @given(parsers.cfparse('I selects country "{country}" and clicks Register Component button'))
+# def selectCountry_Register(register_common_component_page,country:str):
+#     register_common_component_page.choose_country(country)
+#     register_common_component_page.click_register_btn()
+#================scenario steps=============
+# @given(parsers.cfparse('I select {component_type} component type'))
+# def selectComponent(register_common_component_page,component_type):
+#     register_common_component_page.select_component_type_page(component_type)
 
 
 

@@ -1,4 +1,4 @@
-@regression @register
+@regression @register @highlight
 Feature: User input highlight Mod information
   Scenario: Input valid highlight mod information
     Given User goes to Page component management

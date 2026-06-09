@@ -3,9 +3,9 @@ from playwright.sync_api import Page
 from pytest_bdd import scenarios, when, parsers, then, given, scenario
 from tests.pages.partners_page.official_homepage.register_common_component_page import register_common_component
 from tests.helper.field_assertions import assert_field
-@scenario("../../../features/partners/official_homepage/checking_default_fields.feature","I check the default for other specific fields")
-def test_create_hero_banner_with_other_fields():
-    pass
+scenarios("../../../features/partners/official_homepage/checking_default_fields.feature")
+# def test_create_hero_banner_with_other_fields():
+#     pass
 @pytest.fixture
 def register_common_component_page(page:Page,base_url):
     return register_common_component(page,base_url)

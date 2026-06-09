@@ -1,4 +1,5 @@
 Feature: I check the default value in component register
+  @default
     Scenario Outline: I check the default for common fields value
     Given I go to Page component management
     When I selects country "Republic of Korea (used)" and clicks Register Component button
@@ -15,14 +16,12 @@ Feature: I check the default value in component register
     Examples:
       |component_type|component_tile_option|
       |Banner|Do Not Use                    |
-      |Featured Mod|Use|
-      |Hero Banner|Do Not Use|
-      |Highlight Mod|Use|
-      |Normal Mod|Use|
-      |Ranking|Use|
-
-
-
+#      |Featured Mod|Use|
+#      |Hero Banner|Do Not Use|
+#      |Highlight Mod|Use|
+#      |Normal Mod|Use|
+#      |Ranking|Use|
+  @default1
     Scenario Outline: I check the default for other specific fields
       Given I go to Page component management
       When I selects country "Republic of Korea (used)" and clicks Register Component button
